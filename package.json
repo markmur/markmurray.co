@@ -31,7 +31,8 @@
   "scripts": {
     "start": "node webpackDevServer",
     "build": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "analyze": "webpack --config webpack.config.prod.js --json | webpack-bundle-size-analyzer"
   },
   "main": "app.js",
   "author": "Mark Murray <mark@boxfish.com>",
