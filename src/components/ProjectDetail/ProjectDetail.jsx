@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { firebase, helpers } from 'redux-react-firebase';
+import { firebase, helpers } from 'redux-firebasev3';
 
 const propTypes = {};
 const defaultProps = {};

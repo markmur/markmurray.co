@@ -61,8 +61,7 @@ module.exports = {
       {
         test: /\.(js|jsx)?$/, // react files
         include: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'node_modules', 'redux-react-firebase')
+          path.resolve(__dirname, 'src')
         ],
         loaders: ['react-hot', 'babel?' + JSON.stringify({
           presets: ['es2015', 'stage-0', 'react'],
