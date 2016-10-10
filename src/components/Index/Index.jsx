@@ -23,7 +23,7 @@ class Index extends Component {
           <p>Front End Developer /</p>
           <p>UI Designer</p>
 
-          <small>Mark Murray is a Developer & Designer from Ireland living in San Francisco, where he works for <a href="http://boxfish.com">Boxfish</a>. Regular amateur Photographer, Musician and Coffee Drinker.</small>
+          <small>Mark Murray is a Developer & Designer from Ireland living in San Francisco, where he works for <a href="http://boxfish.com">Boxfish</a>. Hobby Photographer, Musician and Coffee Lover.</small>
         </div>
       </div>
     );

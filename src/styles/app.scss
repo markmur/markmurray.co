@@ -95,6 +95,19 @@ $lg-device: 1200px;
   background: lighten($black-pearl, 10%);
 }
 
+.NotFound {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  justify-content: center;
+  height: 100vh;
+
+  h1 {
+    margin-bottom: 1em;
+  }
+}
+
 #Logo {
   @include logo-font;
   color: $blue;
@@ -431,7 +444,8 @@ input:not([type="submit"]), textarea {
   }
 }
 
-button {
+button, a.button {
+  margin: 0 auto;
   background: $blue;
   color: white;
   border-radius: $radius;
@@ -440,12 +454,9 @@ button {
   text-align: center;
   padding: 1em 3em;
   font-size: 12px;
-  width: 100%;
   border: none;
   outline: none;
   cursor: pointer;
-  display: block;
-  margin: 1em auto 0;
   box-shadow: 0 2px 16px 0 rgba($deep-blue, 0.2);
   transition: background 0.2s ease;
   will-change: background;

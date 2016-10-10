@@ -70,11 +70,14 @@ const routes = (
 
         <Route path="projects" component={Projects} />
         <Route path="projects/:id" component={ProjectDetail} />
+
+        {/*
         <Route path="photography" component={Photos} />
         <Route path="posts" component={Posts} />
-      </Route>
+        */}
 
-      <Route path="/*" component={NotFound} />
+        <Route path="*" component={NotFound} />
+      </Route>
     </Router>
   </Provider>
 );

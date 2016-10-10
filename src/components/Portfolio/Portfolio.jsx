@@ -7,7 +7,6 @@ import config from 'config/metrics';
 const { pathToJS } = helpers;
 
 import Menu from 'Menu/Menu';
-import Nav from 'Nav/Nav';
 
 @metrics(config)
 @firebase()
@@ -39,10 +38,6 @@ class Portfolio extends Component {
         <Menu />
 
         <section class="main-content">
-          {typeof this.props.profile !== 'undefined' ?
-            <Nav user={this.props.profile} />
-          : null}
-
           {this.props.children}
         </section>
       </div>
