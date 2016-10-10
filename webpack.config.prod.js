@@ -47,7 +47,7 @@ module.exports = {
     new CleanWebpackPlugin(['public'], {
       verbose: false,
       dry: false,
-      exclude: ['images', 'fonts']
+      exclude: ['images', 'fonts', 'favicon.png']
     }),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.DedupePlugin(),
