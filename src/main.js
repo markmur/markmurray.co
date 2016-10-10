@@ -40,10 +40,6 @@ import Index from 'Index/Index';
 // PROJECTS
 import Projects from 'Projects/Projects';
 import ProjectDetail from 'ProjectDetail/ProjectDetail';
-import ProjectEditor from 'ProjectEditor/ProjectEditor';
-
-// AUTH
-import Login from 'Login/Login';
 
 import Photos from 'Photos/Photos';
 import Posts from 'Posts/Posts';
@@ -59,11 +55,6 @@ const requireAuth = (props, replaceState) => {
 const routes = (
   <Provider store={store}>
     <Router history={browserHistory}>
-
-      <Route onEnter={requireAuth}>
-        <Route path="/login" component={Login} />
-        <Route path="/projects/editor" component={ProjectEditor} />
-      </Route>
 
       <Route path="/" component={Portfolio}>
         <IndexRoute component={Index} />

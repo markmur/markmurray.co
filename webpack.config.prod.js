@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: '#source-map',
+  devtool: 'source-map',
 
   // Capture timing information for each module
   profile: false,
