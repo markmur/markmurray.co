@@ -26,11 +26,6 @@ import Menu from 'Menu/Menu';
 )
 class Portfolio extends Component {
 
-  componentDidMount() {
-    console.log(this.props.firebase);
-    window.firebase = this.props.firebase;
-  }
-
   render() {
     return (
       <div class="Portfolio site-content">

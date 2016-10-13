@@ -57,8 +57,8 @@ module.exports = {
       },
       compress: {
         warnings: false,
-        screw_ie8: true,
-      },
+        screw_ie8: true
+      }
     }),
     new webpack.DefinePlugin({
       __ENV__: NODE_ENV,

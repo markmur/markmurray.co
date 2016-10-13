@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { firebase, helpers } from 'redux-firebasev3';
+import Markdown from 'react-markdown';
 
 const propTypes = {};
 const defaultProps = {};
@@ -21,13 +22,7 @@ class ProjectDetail extends Component {
 
     return (
       <div class="ProjectDetail">
-        <header style={{ backgroundImage: `url(${project.image})` }}>
-          <h1 class="text-center">{project.name}</h1>
-        </header>
-
-        <div class="container">
-          <p>{project.caption}</p>
-        </div>
+        <Markdown source={project.body} />
       </div>
     );
   }
