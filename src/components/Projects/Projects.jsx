@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { firebase, helpers } from 'redux-firebasev3';
 
 import Project from 'Project/Project';
+import Loader from 'Loader/Loader';
 
 const { dataToJS, pathToJS } = helpers;
 
@@ -41,6 +42,9 @@ class Projects extends Component {
 
     return (
       <div class="projects">
+
+        <Loader />
+
         {projectsArray.map(project =>
           <Project
             key={project.id}

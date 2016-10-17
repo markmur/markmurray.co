@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config.dev');
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 require('colors');
 
@@ -9,7 +9,7 @@ new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   noInfo: true,
-  historyApiFallback: true
+  historyApiFallback: true,
 }).listen(PORT, 'localhost', function (err, result) {
   if (err) console.log(err);
 

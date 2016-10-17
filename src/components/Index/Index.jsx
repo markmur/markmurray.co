@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import img from 'images/mark.jpg';
 
 const propTypes = {};
-
 const defaultProps = {};
 
 class Index extends Component {

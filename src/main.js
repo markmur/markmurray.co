@@ -1,5 +1,6 @@
 import 'styles/app.scss';
 import 'styles/icons.css';
+import 'images/preview.png';
 
 import React from 'react';
 import { render } from 'react-dom';

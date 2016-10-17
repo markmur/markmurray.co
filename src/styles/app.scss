@@ -190,7 +190,8 @@ $lg-device: 1200px;
     }
 
     @include xs-device {
-      flex: 0 0 100%;
+      flex: inherit;
+      width: 100%;
     }
 
     &:hover {
@@ -282,6 +283,30 @@ body {
   $one: rgba($black-pearl, 0.9);
   $two: rgba(darken($black-pearl, 6%), 0.9);
 
+  @include xs-device {
+    height: 100%;
+    flex: 1;
+
+    .IndexContent {
+      padding: 1.5em!important;
+      height: inherit!important;
+      flex: 1;
+
+      h2 {
+        font-size: 2rem!important;
+      }
+
+      p {
+        font-size: 3rem!important;
+      }
+
+      small {
+        max-width: 100%!important;
+        font-size: 1.25rem!important;
+      }
+    }
+  }
+
   .IndexOverlay {
     background: rgba($black-pearl, 0.9);
     background: linear-gradient(to right, $one, $two);
@@ -312,7 +337,7 @@ body {
       // color: $green;
       text-align: left;
       @include logo-font;
-      font-size: 3em;
+      font-size: 3rem;
     }
 
     p {
@@ -533,6 +558,17 @@ h3 { font-size: 1.25rem }
   display: flex;
   flex-direction: row;
 
+  @include xs-device {
+    flex-direction: column;
+    height: 100vh;
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 100%!important;
+    }
+  }
+
   .main-content {
     flex: 1;
   }
@@ -548,6 +584,34 @@ nav {
   flex-direction: column;
   transition: width 200ms ease-in-out;
   will-change: width;
+
+  @include xs-device {
+    height: 70px;
+    width: 100%;
+    transition: height 200ms ease-in-out;
+    will-change: height;
+
+    #MenuIcon {
+      text-align: right!important;
+    }
+
+    &.open {
+      width: 100%!important;
+      height: 330px;
+
+      .nav-content {
+        padding: 0 1em 1em!important;
+      }
+    }
+
+    .nav-content {
+      padding: 0!important;
+    }
+
+    menu.social-links-menu {
+      display: none!important;
+    }
+  }
 
   &.open {
     width: $nav-width-open;
@@ -743,5 +807,87 @@ menu {
     .flickr-image {
       margin-bottom: -7px;
     }
+  }
+}
+
+
+
+$dots: 7;
+$color: lighten(#0087ff, 20%);
+$color2: $color;
+$size: 15px;
+$speed: 0.4s;
+
+.Loader {
+  display: block;
+  text-align: center;
+  width: 200px;
+  margin: 4em auto;
+  transform: rotate(180deg);
+
+  .dot {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    background: $color;
+    animation: sway $speed ease infinite;
+    @for $i from 1 through $dots {
+      &:nth-child(#{$i}) {
+        left: ($i/$dots)*100%;
+        animation-delay: ($i/4 + s);
+      }
+    }
+  }
+
+  .dotb {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    background: $color2;
+    animation: swayb $speed ease infinite 3s, reset 1s ease forwards 5s;
+    @for $j from 1 through $dots {
+      &:nth-child(#{$j}) {
+        left: ($j/$dots)*100%;
+        animation-delay: ($j/4 + s);
+      }
+    }
+  }
+}
+@keyframes sway {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: 40px;
+    transform: (scale(0.75));
+    z-index: 1;
+    opacity: 0;
+  }
+}
+@keyframes swayb {
+  from {
+    top: 40px;
+    transform: (scale(0.75));
+    z-index: 2;
+  }
+
+  to {
+    top: 0;
+  }
+}
+@keyframes reset {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: 0;
   }
 }

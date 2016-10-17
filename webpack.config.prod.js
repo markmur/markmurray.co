@@ -68,6 +68,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Mark Murray',
+      preview: '/src/images/preview.png',
       template: 'layout.ejs',
       output: {
         path: 'public',

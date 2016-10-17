@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const NODE_ENV = process.env.NODE_ENV;
 
+const PORT = process.env.PORT || 3000;
+
 module.exports = {
   target: 'web',
 
@@ -9,7 +11,7 @@ module.exports = {
 
   entry: [
     'babel-polyfill',
-    'webpack-dev-server/client?http://localhost:3000',
+    `webpack-dev-server/client?http://localhost:${PORT}`,
     'webpack/hot/dev-server',
     './src/main.js',
   ],
@@ -18,7 +20,7 @@ module.exports = {
     path: path.join(__dirname, '/public/'),
     filename: 'bundle.js',
     pathInfo: true,
-    publicPath: 'http://localhost:3000/',
+    publicPath: `http://localhost:${3000}/`,
     hot: true,
   },
 
