@@ -13,6 +13,11 @@ $logo-font: 'Satisfy';
 // FONTS
 @import url('https://fonts.googleapis.com/css?family=#{str-replace($logo-font, ' ', '+')}');
 
+// Pastel Colors
+$pastel-green: #58B3B2;
+$pastel-pink: #E0B0C2;
+$pastel-orange: #E19C7D;
+
 // COLORS
 $navy:            #2c3e50;
 $pink:            #DA5269;
@@ -28,6 +33,7 @@ $bg-grey:         rgb(246, 246, 249);
 $background:      $black-pearl;
 $menu-links:      $light-grey;
 $green:           #1abc9c;
+$blue-gradient: (#005FFF, 0.09, #0031FF, 0.5);
 
 // VARIABLES
 $main-font: 'Lato';
@@ -87,6 +93,22 @@ $lg-device: 1200px;
   @if $lg == true { @include lg-device { @content; }}
 }
 
+$directions: (top, bottom, left, right);
+
+@for $i from 1 through length($directions) {
+  .margin-#{nth($directions, $i)}-auto {
+    margin-#{nth($directions, $i)}: auto;
+  }
+
+  .margin-#{nth($directions, $i)} {
+    margin-#{nth($directions, $i)}: 1em;
+  }
+
+  .padding-#{nth($directions, $i)} {
+    padding-#{nth($directions, $i)}: 1em;
+  }
+}
+
 %primary-gradient {
   @include primary-gradient;
 }
@@ -94,6 +116,8 @@ $lg-device: 1200px;
 ::selection {
   background: lighten($black-pearl, 10%);
 }
+
+.capitalize { text-transform: capitalize; }
 
 .NotFound {
   display: flex;
@@ -307,9 +331,25 @@ body {
     }
   }
 
+  .rekt {
+    position: absolute;
+    width: 372px;
+    border: 20px solid;
+    z-index: 3;
+    margin-top: 7%;
+    margin-left: 9%;
+    height: 80vh;
+    opacity: 0.15;
+  }
+
   .IndexOverlay {
     background: rgba($black-pearl, 0.9);
     background: linear-gradient(to right, $one, $two);
+    // background: linear-gradient(
+    //   to bottom right,
+    //   rgba(nth($blue-gradient, 1), nth($blue-gradient, 2)),
+    //   rgba(nth($blue-gradient, 3), nth($blue-gradient, 4))
+    // );
     @include overlay;
     z-index: 2;
   }
@@ -333,7 +373,7 @@ body {
 
     h2 {
       // color: #DA5269;
-      color: #0087ff;
+      color: white;
       // color: $green;
       text-align: left;
       @include logo-font;
@@ -341,9 +381,11 @@ body {
     }
 
     p {
-      font-size: 6rem;
+      font-size: 5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       font-weight: bold;
-      color: white;
+      color: $pastel-green;
       margin: 0;
       text-align: left;
       font-family: 'Helvetica', sans-serif;
@@ -354,7 +396,7 @@ body {
       display: block;
       @include main-font;
       margin-top: 1em;
-      font-size: 1.3em;
+      font-size: 1.1em;
       max-width: 35vw;
       color: darken(white, 30%);
     }
@@ -470,14 +512,17 @@ input:not([type="submit"]), textarea {
 }
 
 button, a.button {
+  display: flex;
+  align-items: center;
   margin: 0 auto;
-  background: $blue;
+  background: $pastel-green;
   color: white;
+  font-weight: 400;
   border-radius: $radius;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center;
-  padding: 1em 3em;
+  letter-spacing: 2px;
+  text-align: right;
+  padding: 1em 2em 3em 1em;
   font-size: 12px;
   border: none;
   outline: none;
@@ -571,11 +616,13 @@ h3 { font-size: 1.25rem }
 
   .main-content {
     flex: 1;
+    padding-left: $nav-width;
   }
 }
 
 // NAV
 nav {
+  position: fixed;
   width: $nav-width;
   background: $black-pearl;
   height: 100vh;
@@ -889,5 +936,85 @@ $speed: 0.4s;
 
   to {
     top: 0;
+  }
+}
+
+hr {
+  background: transparent;
+  border: none;
+  border-top: 1px solid;
+  height: 0;
+  width: 100%;
+  margin: 1em auto;
+}
+
+.ProjectShowcase {
+  position: relative;
+  height: 100vh;
+  padding: 5em 3em;
+  color: white;
+  background-size: cover;
+  background-position: center center;
+
+  &--info {
+  }
+
+  &--overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background: rgba(lighten($background, 2%), 0.8);
+  }
+
+  .content {
+    position: relative;
+    max-width: 350px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+
+    h1 {
+      font-size: 3.125em;
+    }
+
+    button, a {
+      display: flex;
+      align-items: center;
+      border-radius: 0;
+      background: $pastel-green;
+      color: white;
+      text-align: right;
+      text-transform: uppercase;
+      width: 100%;
+      margin-bottom: 1em;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      padding: 0 2em;
+      padding-right: 0;
+      @include header-font;
+      cursor: pointer;
+      transition: padding 200ms, background 200ms;
+
+      &:hover {
+        padding-left: 3em;
+        background: darken($pastel-green, 7.5%);
+
+        i {
+          padding: 1em 2em;
+        }
+      }
+
+      i {
+        margin-left: auto;
+        padding: 1em;
+        font-size: 16px;
+        background: darken($pastel-green, 7.5%);
+        transition: padding 200ms;
+      }
+    }
   }
 }

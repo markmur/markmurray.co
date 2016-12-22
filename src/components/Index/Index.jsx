@@ -1,10 +1,26 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { firebase, helpers } from 'redux-firebasev3';
+const { dataToJS } = helpers;
+
+import ProjectShowcase from 'ProjectShowcase/ProjectShowcase';
 
 import img from 'images/mark.jpg';
 
-const propTypes = {};
-const defaultProps = {};
+const propTypes = {
+  projects: PropTypes.object
+};
 
+const defaultProps = {
+  projects: {}
+};
+
+const mapStateToProps = ({ firebase }) => ({
+  projects: dataToJS(firebase, 'projects') || {}
+});
+
+@firebase(['projects'])
+@connect(mapStateToProps)
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -13,16 +29,37 @@ class Index extends Component {
     };
   }
 
-  render() {
-    return (
-      <div class="Index" style={{ backgroundImage: `url(${img})` }}>
-        <div class="IndexOverlay" />
-        <div class="IndexContent">
-          <h2>Mark Murray</h2>
-          <p>Front End Developer /</p>
-          <p>UI Designer</p>
+  getPublicProjects(projects = []) {
+    if (!projects.length) return projects;
 
-          <small>Mark Murray is a Developer & Designer from Ireland living in San Francisco, where he works for <a href="http://boxfish.com">Boxfish</a>. Hobby Photographer, Musician and Coffee Lover.</small>
+    return projects.filter(project => project.showcase);
+  }
+
+  render() {
+
+    const projects =
+      this.getPublicProjects(
+        Object.keys(this.props.projects).map(x => this.props.projects[x])
+      );
+
+    return (
+      <div class="homepage">
+        <div class="Index" style={{ backgroundImage: `url(${img})` }}>
+          <div class="rekt" />
+          <div class="IndexOverlay" />
+          <div class="IndexContent">
+            <h2>Mark Murray</h2>
+            <p>Front End Developer /</p>
+            <p>UI Designer</p>
+
+            <small>
+              Twenty-something year old Front-End Developer and UI Designer from
+              Ireland, living in San Francisco, trying to figure out what to do with his life.
+              Currently working full-time for <a href="https://boxfish.com">Boxfish</a>.
+
+              <br /><br /> You can contact me at <a href="mailto:hello@markmurray.co">hello@markmurray.co</a>
+            </small>
+          </div>
         </div>
       </div>
     );

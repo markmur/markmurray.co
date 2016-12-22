@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 module.exports = {
   target: 'web',
 
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
 
   entry: [
     'babel-polyfill',
