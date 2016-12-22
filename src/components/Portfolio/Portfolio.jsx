@@ -3,8 +3,6 @@ import { metrics } from 'react-metrics';
 import config from 'config/metrics';
 import classNames from 'classnames';
 
-const { pathToJS } = helpers;
-
 import Menu from 'Menu/Menu';
 
 @metrics(config)
