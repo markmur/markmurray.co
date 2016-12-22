@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { firebase, helpers } from 'redux-firebasev3';
 import { metrics } from 'react-metrics';
 import config from 'config/metrics';
 import classNames from 'classnames';
@@ -10,21 +8,6 @@ const { pathToJS } = helpers;
 import Menu from 'Menu/Menu';
 
 @metrics(config)
-@firebase()
-@connect(
-  // Map State to Props
-  ({ firebase }) => {
-
-    const profile = pathToJS(firebase, 'auth') || {};
-    const { displayName, email, photoURL } = profile;
-
-    if (Object.keys(profile).length) {
-      return {
-        profile: { displayName, email, photoURL }
-      };
-    } else return {};
-  }
-)
 class Portfolio extends Component {
   constructor(props) {
     super(props);
@@ -38,12 +21,12 @@ class Portfolio extends Component {
     return (
       <div
         class={classNames('Portfolio site-content', {
-          'nav-open': !this.state.navOpen
+          'nav-open': this.state.navOpen
         })}>
 
         <Menu
-          onOpen={() => this.setState({ navOpen: true })}
-          onClose={() => this.setState({ navOpen: false })} />
+          onOpen={() => this.setState({ navOpen: false })}
+          onClose={() => this.setState({ navOpen: true })} />
 
         <section class="main-content">
           {this.props.children}
