@@ -37,6 +37,7 @@ $blue-gradient: (#005FFF, 0.09, #0031FF, 0.5);
 
 // VARIABLES
 $main-font: 'Lato';
+$primary: $pastel-green;
 $radius: 4px;
 $line-speed: 1s;
 $line-easing: cubic-bezier(0.65, 0.05, 0.36, 1);
@@ -134,7 +135,7 @@ $directions: (top, bottom, left, right);
 
 #Logo {
   @include logo-font;
-  color: $blue;
+  color: $primary;
   font-weight: normal;
   text-align: center;
 }
@@ -515,7 +516,7 @@ button, a.button {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  background: $pastel-green;
+  background: $primary;
   color: white;
   font-weight: 400;
   border-radius: $radius;
@@ -532,7 +533,7 @@ button, a.button {
   will-change: background;
 
   &:hover {
-    background: lighten($blue, 5%);
+    background: lighten($primary, 5%);
   }
 }
 
@@ -755,7 +756,7 @@ menu {
 
         &.active {
           background: white;
-          color: $blue;
+          color: $primary;
           font-weight: bold;
         }
 

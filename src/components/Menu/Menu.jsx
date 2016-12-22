@@ -73,8 +73,8 @@ class Menu extends Component {
             <div class="nav-menu">
               <menu class="social-links-menu compact small" type="toolbar">
                 <a target="_blank" href="https://twitter.com/markmur">Twitter</a>
-                <a target="_blank" href="https://instagram.com/markmur">Instagram</a>
-                <a target="_blank" href="https://facebook.com/mark.murray.1991">Facebook</a>
+                <a style={{ paddingLeft: 0 }} target="_blank" href="https://instagram.com/markmur">Instagram</a>
+                <a target="_blank" href="https://github.com/markmur">Github</a>
               </menu>
             </div>
           </div>
