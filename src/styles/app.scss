@@ -300,13 +300,17 @@ body {
   z-index: 100;
 }
 
+$one: rgba($black-pearl, 1);
+$two: rgba(darken($black-pearl, 6%), 0.8);
+
+.Portfolio.nav-open .Index .IndexOverlay {
+  opacity: 0.9;
+}
+
 .Index {
   position: relative;
   background-size: cover;
   background-position: center center;
-
-  $one: rgba($black-pearl, 0.9);
-  $two: rgba(darken($black-pearl, 6%), 0.9);
 
   @include xs-device {
     height: 100%;
@@ -346,12 +350,9 @@ body {
   .IndexOverlay {
     background: rgba($black-pearl, 0.9);
     background: linear-gradient(to right, $one, $two);
-    // background: linear-gradient(
-    //   to bottom right,
-    //   rgba(nth($blue-gradient, 1), nth($blue-gradient, 2)),
-    //   rgba(nth($blue-gradient, 3), nth($blue-gradient, 4))
-    // );
     @include overlay;
+    opacity: 1;
+    transition: opacity 150ms ease-out;
     z-index: 2;
   }
 
@@ -466,52 +467,6 @@ label {
   font-weight: 600;
 }
 
-.Login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  max-height: 100vh;
-
-  form {
-    width: 360px;
-    border-radius: $radius;
-    margin: 2em auto 3em;
-    padding: 2em;
-    background: white;
-    box-shadow: 0 0 100px 0 rgba(black, 0.1);
-  }
-
-  input[type="text"] {
-    border-bottom: none;
-    margin-bottom: 0;
-    border-radius: $radius $radius 0 0;
-  }
-
-  input[type="password"] {
-    margin-top: 0;
-    border-radius: 0 0 $radius $radius;
-  }
-}
-
-input:not([type="submit"]), textarea {
-  background: lighten($bg-grey, 2%);
-  border: 1px solid darken($border-grey, 2%);
-  border-radius: $radius;
-  padding: 1em;
-  font-size: 14px;
-  outline: none;
-  display: block;
-  margin: 0.5em 0;
-  width: 100%;
-  max-width: 100%;
-
-  &:focus, &:active {
-    border-color: $blue;
-    box-shadow: 0 0 16px 0 rgba($blue, 0.1);
-  }
-}
-
 button, a.button {
   display: flex;
   align-items: center;
@@ -537,35 +492,6 @@ button, a.button {
   }
 }
 
-input[type="submit"] {
-  background: $blue;
-  color: white;
-  border-radius: $radius;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center;
-  padding: 1em 3em;
-  font-size: 12px;
-  width: 100%;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: block;
-  margin: 1em auto 0;
-  box-shadow: 0 2px 16px 0 rgba($deep-blue, 0.2);
-  transition: background 0.2s ease;
-  will-change: background;
-
-  &.created {
-    pointer-events: none;
-    background: $green;
-  }
-
-  &:hover {
-    background: lighten($blue, 5%);
-  }
-}
-
 ul, ol, li {
   list-style-type: none;
 }
@@ -584,7 +510,7 @@ img {
 }
 
 a {
-  color: $deep-blue;
+  color: $primary;
   text-decoration: inherit;
 }
 
@@ -755,8 +681,8 @@ menu {
         }
 
         &.active {
-          background: white;
-          color: $primary;
+          color: white;
+          background: $primary;
           font-weight: bold;
         }
 
@@ -857,8 +783,6 @@ menu {
     }
   }
 }
-
-
 
 $dots: 7;
 $color: lighten(#0087ff, 20%);

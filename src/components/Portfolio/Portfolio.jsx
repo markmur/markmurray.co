@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { firebase, helpers } from 'redux-firebasev3';
 import { metrics } from 'react-metrics';
 import config from 'config/metrics';
+import classNames from 'classnames';
 
 const { pathToJS } = helpers;
 
@@ -25,12 +26,24 @@ import Menu from 'Menu/Menu';
   }
 )
 class Portfolio extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      navOpen: false
+    };
+  }
 
   render() {
     return (
-      <div class="Portfolio site-content">
+      <div
+        class={classNames('Portfolio site-content', {
+          'nav-open': !this.state.navOpen
+        })}>
 
-        <Menu />
+        <Menu
+          onOpen={() => this.setState({ navOpen: true })}
+          onClose={() => this.setState({ navOpen: false })} />
 
         <section class="main-content">
           {this.props.children}

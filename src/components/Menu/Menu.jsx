@@ -5,10 +5,15 @@ import classNames from 'classnames';
 import Logo from 'Logo/Logo';
 
 const propTypes = {
-  active: PropTypes.string
+  active: PropTypes.string,
+  onOpen: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
-const defaultProps = {};
+const defaultProps = {
+  onOpen: () => {},
+  onClose: () => {}
+};
 
 class Menu extends Component {
   constructor(props) {
@@ -20,15 +25,21 @@ class Menu extends Component {
   }
 
   open() {
-    this.setState({ open: true });
+    this.setState({
+      open: true
+    }, () => this.props.onOpen());
   }
 
   close() {
-    this.setState({ open: false });
+    this.setState({
+      open: false
+    }, () => this.props.onClose());
   }
 
   toggle() {
-    this.setState({ open: !this.state.open });
+    this.setState({
+      open: !this.state.open
+    }, this.props[this.state.open ? 'onOpen' : 'onClose']);
   }
 
   render() {
@@ -73,7 +84,7 @@ class Menu extends Component {
             <div class="nav-menu">
               <menu class="social-links-menu compact small" type="toolbar">
                 <a target="_blank" href="https://twitter.com/markmur">Twitter</a>
-                <a style={{ paddingLeft: 0 }} target="_blank" href="https://instagram.com/markmur">Instagram</a>
+                <a style={{ paddingLeft: '0.25em' }} target="_blank" href="https://instagram.com/markmur">Instagram</a>
                 <a target="_blank" href="https://github.com/markmur">Github</a>
               </menu>
             </div>
