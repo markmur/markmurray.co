@@ -4,6 +4,7 @@ import config from 'config/metrics';
 import classNames from 'classnames';
 
 import Menu from 'Menu/Menu';
+import GlobalLoader from 'GlobalLoader/GlobalLoader';
 
 @metrics(config)
 class Portfolio extends Component {
