@@ -50,7 +50,7 @@ function ProjectShowcase(props) {
           : null}
 
           {project.external_url ?
-            <a href={project.external_url}>View Project <i class="icon-go" /></a>
+            <a target="_blank" href={project.external_url}>View Project <i class="icon-go" /></a>
           : null}
 
           <p>Project Type: <strong class="capitalize">{project.type}</strong></p>
