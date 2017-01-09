@@ -7,12 +7,14 @@ import Logo from 'Logo/Logo';
 const propTypes = {
   active: PropTypes.string,
   onOpen: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func
 };
 
 const defaultProps = {
   onOpen: () => {},
-  onClose: () => {}
+  onClose: () => {},
+  onClick: () => {}
 };
 
 class Menu extends Component {
@@ -39,14 +41,16 @@ class Menu extends Component {
   toggle() {
     this.setState({
       open: !this.state.open
-    }, this.props[this.state.open ? 'onOpen' : 'onClose']);
+    }, () =>  {
+      this.props[this.state.open ? 'onOpen' : 'onClose']();
+    });
   }
 
   render() {
     return (
       <div class="Menu" onClick={() => this.toggle()}>
         <nav class={classNames({ open: this.state.open })}>
-          <i id="MenuIcon" class="icon-decorate" />
+          <i id="MenuIcon" class="icon-rain" />
 
           <div class="nav-content">
 
@@ -64,26 +68,12 @@ class Menu extends Component {
                     Projects
                   </Link>
                 </li>
-                {/*
-                <li>
-                  <Link to="/photography" activeClassName="active">
-                    <span class="number">03</span>
-                    Photography
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/posts" activeClassName="active">
-                    <span class="number">04</span>
-                    Recent Posts
-                  </Link>
-                </li>
-                */}
               </menu>
             </div>
 
             <div class="nav-menu">
               <menu class="social-links-menu compact small" type="toolbar">
-                <a target="_blank" href="https://twitter.com/markmur">Twitter</a>
+                <a target="_blank" href="https://twitter.com/markmur">@mrkmur</a>
                 <a style={{ paddingLeft: '0.25em' }} target="_blank" href="https://instagram.com/markmur">Instagram</a>
                 <a target="_blank" href="https://github.com/markmur">Github</a>
               </menu>

@@ -31,6 +31,7 @@ module.exports = {
       'src',
       'src/components',
       'src/styles',
+      'src/fixtures'
     ],
     extensions: ['', '.js', '.jsx'],
   },

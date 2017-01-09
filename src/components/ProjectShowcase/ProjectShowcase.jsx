@@ -29,6 +29,18 @@ function ProjectShowcase(props) {
           <p>{project.caption}</p>
         </div>
 
+        {project.background_image ?
+          <img
+            class="xs-device-image"
+            src={project.background_image}
+            style={{
+              marginTop: '1em',
+              marginBottom: '1em',
+              borderRadius: '4px'
+            }}
+          />
+        : null}
+
         <div class="margin-top-auto">
 
           {/herokuapp/ig.test(project.external_url) ?
@@ -37,7 +49,9 @@ function ProjectShowcase(props) {
             </small>
           : null}
 
-          <a href={project.external_url}>View Project <i class="icon-go" /></a>
+          {project.external_url ?
+            <a href={project.external_url}>View Project <i class="icon-go" /></a>
+          : null}
 
           <p>Project Type: <strong class="capitalize">{project.type}</strong></p>
         </div>

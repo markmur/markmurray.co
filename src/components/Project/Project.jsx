@@ -59,7 +59,7 @@ const wrapProject = (project, content) => {
       <a
         data-metrics-event-name="projectClick"
         data-metrics-project-name={project.name}
-        data-metrics-project-url={project.external_url} 
+        data-metrics-project-url={project.external_url}
         target="_blank"
         href={project.external_url}>
         {content}
@@ -73,29 +73,37 @@ function Project(props) {
 
   if (!project.public) return null;
 
+  const projectContent = (
+    <div class="project-content">
+
+      {project.type === 'github' ?
+        <small class="tag">Github</small>
+      : null}
+
+      {project.type === 'app' ?
+        <small class="app tag">App</small>
+      : null}
+
+      {project.type === 'design' ?
+        <small class="design tag">Design</small>
+      : null}
+
+      <h2 class="project-title">
+        {project.name}
+      </h2>
+      <small>{project.caption}</small>
+    </div>
+  );
+
   return (
-    <div class="project">
-      {wrapProject(project,
-        <div class="project-content">
-
-          {project.type === 'github' ?
-            <small class="tag">Github</small>
-          : null}
-
-          {project.type === 'app' ?
-            <small class="app tag">App</small>
-          : null}
-
-          {project.type === 'design' ?
-            <small class="design tag">Design</small>
-          : null}
-
-          <h2 class="project-title">
-            {project.name}
-          </h2>
-          <small>{project.caption}</small>
-        </div>
-      )}
+    <div
+      class="project"
+      onClick={() => {
+        if (typeof props.onClick === 'function') {
+          props.onClick(project);
+        }
+      }}>
+      {props.onClick ? projectContent : wrapProject(project, projectContent)}
     </div>
   );
 }
