@@ -9,7 +9,6 @@ import Projects from 'Projects/Projects';
 import GlobalLoader from 'GlobalLoader/GlobalLoader';
 
 @metrics(config)
-@firebase()
 class Portfolio extends Component {
   constructor(props) {
     super(props);
