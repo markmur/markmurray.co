@@ -4,6 +4,7 @@ import { firebase, helpers } from 'redux-firebasev3';
 const { dataToJS } = helpers;
 
 import ProjectShowcase from 'ProjectShowcase/ProjectShowcase';
+import GlobalLoader from 'GlobalLoader/GlobalLoader';
 
 import img from 'images/mark.jpg';
 
@@ -32,7 +33,9 @@ class Index extends Component {
   getPublicProjects(projects = []) {
     if (!projects.length) return projects;
 
-    return projects.filter(project => project.showcase);
+    return projects
+      .filter(project => project.showcase)
+      .sort((a, b) => a.order - b.order);
   }
 
   render() {
@@ -44,6 +47,11 @@ class Index extends Component {
 
     return (
       <div class="homepage">
+
+        <GlobalLoader
+          message="Loading Project Showcase..."
+          loading={!projects.length} />
+
         <div class="Index" style={{ backgroundImage: `url(${img})` }}>
           <div class="rekt" />
           <div class="IndexOverlay" />
@@ -55,12 +63,18 @@ class Index extends Component {
             <small>
               Twenty-something year old Front-End Developer and UI Designer from
               Ireland, living in San Francisco, trying to figure out what to do with his life.
-              Currently working full-time for <a href="https://boxfish.com">Boxfish</a>.
+              Currently working full-time for <a target="_blank" href="https://boxfish.com">Boxfish</a>.
 
               <br /><br /> You can contact me at <a href="mailto:hello@markmurray.co">hello@markmurray.co</a>
             </small>
           </div>
         </div>
+
+        {projects.map(project =>
+          <ProjectShowcase
+            key={project.id}
+            project={project} />
+        )}
       </div>
     );
   }

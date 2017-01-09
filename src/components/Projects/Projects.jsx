@@ -8,7 +8,10 @@ import Loader from 'Loader/Loader';
 
 const { dataToJS, pathToJS } = helpers;
 
-const propTypes = {};
+const propTypes = {
+  onProjectClick: PropTypes.func
+};
+
 const defaultProps = {};
 
 const mapStateToProps = ({ firebase }) => ({
@@ -29,6 +32,7 @@ class Projects extends Component {
 
     return Object.keys(projects)
       .map(project => Object.assign({}, projects[project], { id: project }))
+      .filter(project => project.public)
       .sort((a, b) => a.order - b.order)
   }
 
@@ -49,6 +53,7 @@ class Projects extends Component {
           <Project
             key={project.id}
             project={project}
+            onClick={this.props.onProjectClick}
             canDelete={this.props.user !== null}
             onDelete={this.deleteProject.bind(this)} />
         )}

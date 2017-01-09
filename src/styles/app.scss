@@ -133,6 +133,19 @@ $directions: (top, bottom, left, right);
   }
 }
 
+.GlobalLoader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  padding: 2em;
+  z-index: 100;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  @include header-font;
+}
+
 #Logo {
   @include logo-font;
   color: $primary;
@@ -191,6 +204,117 @@ $directions: (top, bottom, left, right);
   }
 }
 
+.fixed-overlay {
+  background: lighten($black-pearl, 2%);
+  position: fixed;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 150ms;
+
+  &.open {
+    opacity: 0.6;
+    z-index: 12;
+    visibility: visible;
+  }
+}
+
+.project-quickview {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: calc(#{$nav-width-open} + 32.5%);
+  width: calc(100% - (#{$nav-width-open} + 32.5%));
+  padding: 3em;
+  background: rgba($black-pearl, 0.9);
+  z-index: 12;
+  color: white;
+  display: none;
+
+  &.open {
+    display: block;
+  }
+
+  button, a {
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    background: $pastel-green;
+    color: white;
+    text-align: right;
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 1em;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    padding: 0 2em;
+    padding-right: 0;
+    @include header-font;
+    cursor: pointer;
+    transition: padding 200ms, background 200ms;
+
+    &:hover {
+      padding-left: 3em;
+      background: darken($pastel-green, 7.5%);
+
+      i {
+        padding: 1em 2em;
+      }
+    }
+
+    i {
+      margin-left: auto;
+      padding: 1em;
+      font-size: 16px;
+      background: darken($pastel-green, 7.5%);
+      transition: padding 200ms;
+    }
+  }
+
+  &--content {
+    h1 {
+      text-align: left;
+      font-size: 3rem;
+    }
+  }
+}
+
+.nav-projects {
+  position: fixed;
+  top: 0;
+  left: -32.5%;
+  z-index: 12;
+  width: 32.5%;
+  height: 100vh;
+  overflow-y: scroll;
+  background: lighten($black-pearl, 0%);
+  transition: left 200ms ease-out;
+
+  &.open {
+    left: $nav-width-open;
+  }
+
+  .projects {
+    display: block;
+    padding: 0;
+
+    .project {
+      border-radius: 0!important;
+      height: inherit;
+      padding: 0.5em;
+
+      .project-content {
+        padding: 0.75em;
+      }
+    }
+  }
+
+}
+
 .projects {
   padding: 1em;
   display: flex;
@@ -205,6 +329,7 @@ $directions: (top, bottom, left, right);
     height: 260px;
     background: lighten($black-pearl, 5%);
     border-radius: $radius;
+    cursor: pointer;
 
     @include md-device {
       flex: 0 0 calc(100% / 3 - 2em);
@@ -226,6 +351,7 @@ $directions: (top, bottom, left, right);
     .project-title {
       margin: 0;
       margin-bottom: 0.5em;
+      line-height: 1.25;
       text-align: left;
       font-size: 28px;
       font-weight: 600;
@@ -318,7 +444,7 @@ $two: rgba(darken($black-pearl, 6%), 0.8);
 
     .IndexContent {
       padding: 1.5em!important;
-      height: inherit!important;
+      height: calc(100vh - #{$nav-width})!important;
       flex: 1;
 
       h2 {
@@ -326,12 +452,12 @@ $two: rgba(darken($black-pearl, 6%), 0.8);
       }
 
       p {
-        font-size: 3rem!important;
+        font-size: 2rem!important;
       }
 
       small {
         max-width: 100%!important;
-        font-size: 1.25rem!important;
+        font-size: 1rem!important;
       }
     }
   }
@@ -345,6 +471,10 @@ $two: rgba(darken($black-pearl, 6%), 0.8);
     margin-left: 9%;
     height: 80vh;
     opacity: 0.15;
+
+    @include xs-device {
+      display: none;
+    }
   }
 
   .IndexOverlay {
@@ -536,6 +666,8 @@ h3 { font-size: 1.25rem }
 
     .main-content {
       display: flex;
+      padding-top: $nav-width;
+      padding-left: 0!important;
       flex-direction: column;
       flex: 1 1 100%!important;
     }
@@ -867,30 +999,61 @@ $speed: 0.4s;
 hr {
   background: transparent;
   border: none;
-  border-top: 1px solid;
+  border-top: 1px solid rgba(white, 0.1);
   height: 0;
   width: 100%;
   margin: 1em auto;
 }
 
+$showcase-height: 100vh;
+
 .ProjectShowcase {
   position: relative;
-  height: 100vh;
+  height: $showcase-height;
   padding: 5em 3em;
   color: white;
   background-size: cover;
   background-position: center center;
 
-  &--info {
+  @include xs-device {
+    height: inherit;
+    padding: 3em 2em;
   }
 
-  &--overlay {
+  &--overlay, &--background {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
-    height: 100vh;
-    background: rgba(lighten($background, 2%), 0.8);
+    height: $showcase-height;
+    // background: rgba(lighten($background, 2%), 0.8);
+    // background: linear-gradient(to right, $one, rgba(darken($black-pearl, 6%), 0.5));
+  }
+
+  &--background {
+    background-position: 0 center;
+    background-size: cover;
+    // background-attachment: fixed;
+    z-index: 2;
+    width: 60%;
+    height: 80vh;
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    box-shadow: 0 0 24px 0 rgba(darken($black-pearl, 10%), 0.2);
+    border-radius: 6px;
+
+    @include devices(true) {
+      display: none;
+    }
+  }
+
+  .xs-device-image {
+    display: none;
+
+    @include xs-device {
+      display: block!important;
+    }
   }
 
   .content {
@@ -901,8 +1064,21 @@ hr {
     flex-direction: column;
     z-index: 10;
 
+    small.note {
+      display: block;
+      text-align: center;
+      margin-bottom: 1em;
+      font-style: italic;
+      opacity: 0.6;
+      font-size: 12px;
+    }
+
     h1 {
-      font-size: 3.125em;
+      font-size: 3.025em;
+
+      @include devices(true, true) {
+        font-size: 2.325rem;
+      }
     }
 
     button, a {
@@ -941,5 +1117,43 @@ hr {
         transition: padding 200ms;
       }
     }
+  }
+}
+
+
+button.button, a.button {
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+  background: $pastel-green;
+  color: white;
+  text-align: right;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 1em;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  padding: 0 2em;
+  padding-right: 0;
+  @include header-font;
+  cursor: pointer;
+  transition: padding 200ms, background 200ms;
+
+  &:hover {
+    padding-left: 3em;
+    background: darken($pastel-green, 7.5%);
+
+    i {
+      padding: 1em 2em;
+    }
+  }
+
+  i {
+    margin-left: auto;
+    padding: 1em;
+    font-size: 16px;
+    background: darken($pastel-green, 7.5%);
+    transition: padding 200ms;
   }
 }
