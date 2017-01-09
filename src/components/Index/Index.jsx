@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { firebase, helpers } from 'redux-firebasev3';
 const { dataToJS } = helpers;
@@ -75,6 +76,33 @@ class Index extends Component {
             key={project.id}
             project={project} />
         )}
+
+        <div
+          style={{
+            padding: '5em 2em 7em',
+            textAlign: 'center',
+            color: 'white'
+          }}>
+
+          <p
+            style={{
+              color: 'white',
+              padding: '2em 0',
+              fontSize: '1.15em'
+            }}>
+            Looking for a Full-Stack / Front-End Developer or UI Designer? <br />
+            Reach out to me at <a href="mailto:hello@markmurray.co">hello@markmurray.co</a>.
+          </p>
+
+          <Link
+            class="button blue"
+            to="/projects"
+            style={{
+              margin: 'auto'
+            }}>
+            View All Projects <i class="icon-go" />
+          </Link>
+        </div>
       </div>
     );
   }

@@ -118,6 +118,11 @@ $directions: (top, bottom, left, right);
   background: lighten($black-pearl, 10%);
 }
 
+p > a {
+  text-decoration: underline;
+  color: inherit;
+}
+
 .capitalize { text-transform: capitalize; }
 
 .NotFound {
@@ -1041,7 +1046,7 @@ $showcase-height: 100vh;
     margin-left: auto;
     margin-bottom: auto;
     box-shadow: 0 0 24px 0 rgba(darken($black-pearl, 10%), 0.2);
-    border-radius: 6px;
+    border-radius: 6px 0 0 6px;
 
     @include devices(true) {
       display: none;
@@ -1132,6 +1137,7 @@ button.button, a.button {
   width: 100%;
   margin-bottom: 1em;
   font-weight: 400;
+  max-width: 300px;
   font-size: 13px;
   letter-spacing: 1.5px;
   padding: 0 2em;
@@ -1157,3 +1163,24 @@ button.button, a.button {
     transition: padding 200ms;
   }
 }
+
+@mixin createButton($name, $color) {
+  button.button,
+  a.button {
+    &.#{$name} {
+      background: $color;
+
+      &:hover {
+        background: darken($color, 7.5%);
+      }
+
+      i {
+        background: darken($color, 7.5%);
+      }
+    }
+  }
+}
+
+@include createButton('blue', $blue);
+@include createButton('orange', $pastel-orange);
+@include createButton('pink', $pastel-pink);
