@@ -8,12 +8,11 @@ const propTypes = {
     description: PropTypes.string,
     caption: PropTypes.string,
     image: PropTypes.string,
-  }),
-  canDelete: PropTypes.bool
+  })
 };
 
 const defaultProps = {
-  canDelete: false
+
 };
 
 const fetchGithubProject = (url) => {
@@ -103,6 +102,15 @@ function Project(props) {
           props.onClick(project);
         }
       }}>
+
+      {project.background_image ?
+        <div
+          class="project-image"
+          style={{
+            backgroundImage: `url(${project.background_image})`
+          }} />
+      : null}
+
       {props.onClick ? projectContent : wrapProject(project, projectContent)}
     </div>
   );

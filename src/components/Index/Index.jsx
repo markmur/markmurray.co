@@ -26,9 +26,6 @@ const mapStateToProps = ({ firebase }) => ({
 class Index extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-    };
   }
 
   getPublicProjects(projects = []) {

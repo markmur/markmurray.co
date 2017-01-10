@@ -41,7 +41,6 @@ import Index from 'Index/Index';
 // PROJECTS
 import Projects from 'Projects/Projects';
 import ProjectDetail from 'ProjectDetail/ProjectDetail';
-import Slider from 'Slider/Slider';
 
 const routes = (
   <Provider store={store}>
