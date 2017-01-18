@@ -742,15 +742,15 @@ nav {
 
     menu.social-links-menu {
       height: inherit!important;
-      flex-direction: column-reverse;
 
       a {
-        transform: rotate(0deg);
-        text-align: center;
         padding: 0.5em;
-        height: inherit;
-        width: inherit!important;
         flex: 0 1 auto;
+        text-align: left;
+
+        span {
+          opacity: 1;
+        }
       }
     }
 
@@ -851,8 +851,7 @@ menu {
     flex-direction: column;
     justify-content: center;
     border-top: 1px solid rgba($border-grey, 0.2);
-    max-width: 160px;
-    padding-top: 1em;
+    padding-top: 2em;
     margin: auto;
     text-align: center;
     height: 300px;
@@ -861,14 +860,18 @@ menu {
       display: block;
       color: rgba(white, 0.7);
       flex: 1;
-      width: 100px;
-      padding: 0 1em;
+      padding: 0 0.5em;
       overflow: hidden;
       margin: 0;
       text-align: left;
-      transform: rotate(-90deg);
       transition: transform 300ms ease;
       will-change: transform;
+      white-space: nowrap;
+
+      > span {
+        opacity: 0;
+        transition: opacity 100ms ease;
+      }
 
       &:hover {
         color: white;

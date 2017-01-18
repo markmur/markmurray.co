@@ -17,6 +17,7 @@
     "firebase": "^3.4.0",
     "immutable": "^3.8.1",
     "jquery": "^3.1.1",
+    "prettier": "^0.0.8",
     "re-base": "^2.2.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
@@ -36,7 +37,7 @@
     "analyze": "webpack --config webpack.config.prod.js --json | webpack-bundle-size-analyzer"
   },
   "main": "app.js",
-  "author": "Mark Murray <mark@boxfish.com>",
+  "author": "Mark Murray <mark.murray.ie@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -68,5 +69,6 @@
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "webpack-dev-server": "^1.14.1"
-  }
+  },
+  "repository": "https://github.com/markmur/markmurray.co.git"
 }
