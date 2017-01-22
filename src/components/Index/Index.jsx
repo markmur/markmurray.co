@@ -60,8 +60,9 @@ class Index extends Component {
 
             <small>
               Twenty-something year old Front-End Developer and UI Designer from
-              Ireland, living in San Francisco, trying to figure out what to do with his life.
-              Currently working full-time for <a target="_blank" href="https://boxfish.com">Boxfish</a>.
+              Ireland, trying to figure out what to do with his life.{' '}
+              <s>Currently working full-time for <a target="_blank" href="https://boxfish.com">Boxfish</a> in San Francisco.</s>
+              <span> En route back to Dublin, Ireland!</span>
 
               <br /><br /> You can contact me at <a href="mailto:hello@markmurray.co">hello@markmurray.co</a>
             </small>
