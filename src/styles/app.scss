@@ -11,7 +11,7 @@
 $logo-font: 'Satisfy';
 
 // FONTS
-@import url('https://fonts.googleapis.com/css?family=#{str-replace($logo-font, ' ', '+')}');
+@import url('https://fonts.googleapis.com/css?family=Lato|Lora|#{str-replace($logo-font, ' ', '+')}');
 
 // Pastel Colors
 $pastel-green: #58B3B2;
