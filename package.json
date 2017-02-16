@@ -15,6 +15,8 @@
     "bluebird": "^3.4.6",
     "classnames": "^2.2.5",
     "firebase": "^3.4.0",
+    "firebase-tools": "^3.3.0",
+    "global": "^4.3.1",
     "immutable": "^3.8.1",
     "jquery": "^3.1.1",
     "prettier": "^0.0.8",
