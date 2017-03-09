@@ -87,7 +87,7 @@ class Index extends Component {
               padding: '2em 0',
               fontSize: '1.15em'
             }}>
-            Looking for a Full-Stack / Front-End Developer or UI Designer? <br />
+            Looking for a Front-End Developer / UI Designer? <br />
             Reach out to me at <a href="mailto:hello@markmurray.co">hello@markmurray.co</a>.
           </p>
 
