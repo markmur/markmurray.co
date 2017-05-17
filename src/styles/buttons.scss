@@ -1,0 +1,35 @@
+.button {
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+  background: $primary;
+  color: white;
+  text-align: right;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 1em;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  padding: 0 2em;
+  padding-right: 0;
+  cursor: pointer;
+  transition: padding 200ms, background 200ms;
+
+  &:hover {
+    padding-left: 3em;
+    background: darken($primary, 7.5%);
+
+    i {
+      padding: 1em 2em;
+    }
+  }
+
+  i {
+    margin-left: auto;
+    padding: 1em;
+    font-size: 16px;
+    background: darken($primary, 7.5%);
+    transition: padding 200ms;
+  }
+}

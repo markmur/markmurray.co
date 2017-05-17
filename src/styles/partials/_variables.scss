@@ -1,0 +1,36 @@
+// Fonts
+$headline-font: 'Helvetica';
+$font-stack: 'Helvetica Neue', Helvetica;
+$font-weight: 400;
+$line-height: 1.65;
+$logo-font: 'Playfair Display';
+
+// Colors
+$primary: black;
+$radius: 4px;
+$line-speed: 1s;
+$line-easing: cubic-bezier(0.65, 0.05, 0.36, 1);
+
+// Nav
+$nav-width: 270px;
+$nav-color: black;
+$nav-easing: cubic-bezier(0.6,0,0.2,1);
+$nav-timing: 0.6s;
+$nav-delay: 1s;
+
+// Devices
+$xs-device: 767px;
+$sm-device: 768px;
+$md-device: 992px;
+$lg-device: 1200px;
+
+// Projects
+$showcase-height: 80vh;
+$overlay-opacity: 0.6;
+
+// Z-indexes
+$z-about: 8;
+$z-header: 10;
+$z-sidebar: 9;
+$z-highlight: 8;
+$z-content: 1;

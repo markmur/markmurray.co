@@ -1,0 +1,128 @@
+@mixin highlight($animate: false, $animation-delay: 0ms) {
+  display: inline-table;
+  padding: 5px 5px 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: rgba(#afe0e0, 0.75);
+    z-index: -1;
+
+    @if $animate == true {
+      width: 0;
+      padding: 0;
+      animation: expand 1s $nav-easing $animation-delay forwards;
+    }
+
+    @if $animate == false {
+      width: 100%;
+      padding: 0 1em;
+    }
+  }
+}
+
+body {
+  font-size: 16px;
+  font-family: $font-stack;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: 0.025em;
+  background: lighten($background, 2%);
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  margin: 0;
+}
+
+::selection {
+  background: #afe0e0;
+}
+
+p > a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Helvetica, sans-serif;
+  position: relative;
+  letter-spacing: 0.0125em;
+}
+
+@keyframes expand {
+  from { width: 0; padding: 0; }
+  to { width: 100%; padding: 0 1em; }
+}
+
+h1 {
+  position: relative;
+  z-index: 1;
+  display: inline-table;
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: $primary;
+  padding: 0 19px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-family: sans-serif;
+  line-height: 1.25;
+  white-space: nowrap;
+
+  &:nth-of-type(1) {
+    @include highlight(true);
+  }
+
+  &:nth-of-type(2) {
+    @include highlight(true, 250ms);
+  }
+
+  &:nth-of-type(3) {
+    @include highlight(true, 500ms);
+  }
+}
+
+h2 {
+  @include highlight(false);
+  font-size: 2rem;
+}
+
+h3 { font-size: 1.25rem }
+
+p {
+  color: $text-grey;
+}
+
+label {
+  color: $deep-blue;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+ul, ol, li {
+  list-style-type: square;
+}
+
+li > a {
+  color: inherit;
+  text-decoration: inherit;
+  padding-bottom: 2px;
+  border-bottom: 1px dotted;
+
+  &:hover {
+    border-bottom: 1px solid;
+  }
+}
+
+a {
+  color: $primary;
+  text-decoration: inherit;
+}
+
+a:visited {
+  text-decoration: line-through;
+}

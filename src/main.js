@@ -32,21 +32,19 @@ const store = createStoreWithFirebase(
   window.devToolsExtension && window.devToolsExtension()
 );
 
-// CONTAINERS
-import Portfolio from 'Portfolio/Portfolio';
-import NotFound from 'NotFound/NotFound';
-
-import Index from 'Index/Index';
-
-// PROJECTS
-import Projects from 'Projects/Projects';
-import ProjectDetail from 'ProjectDetail/ProjectDetail';
+import {
+  App,
+  NotFound,
+  Index,
+  Projects,
+  ProjectDetail
+} from 'components';
 
 const routes = (
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)}>
 
-      <Route path="/" component={Portfolio}>
+      <Route path="/" component={App}>
         <IndexRoute component={Index} />
 
         <Route path="projects" component={Projects} />
