@@ -8,3 +8,5 @@ bower_components
 .node_history
 *.log
 dist/
+public
+.sonarlint
