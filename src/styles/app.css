@@ -147,3 +147,7 @@ h3 {
 .Portfolio.nav-open .Index .IndexOverlay {
   opacity: 0.9;
 }
+
+.margin-top-auto {
+  margin-top: auto;
+}

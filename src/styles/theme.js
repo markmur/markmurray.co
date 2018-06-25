@@ -38,7 +38,9 @@ const theme = {
   projectDetail: {
     height: '400px'
   },
-  projectShowcase: '100vh',
+  projectShowcase: {
+    height: '100vh'
+  },
   device: queries,
   colors: {
     ...colors,

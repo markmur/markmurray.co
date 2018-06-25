@@ -11,6 +11,7 @@ const Hero = styled.div`
   position: relative;
   background-size: cover;
   background-position: center center;
+  height: 100vh;
 
   ${device.xs`
     height: 100%;
