@@ -1,0 +1,145 @@
+p {
+  color: var(--text-grey);
+}
+
+body {
+  font-family: 'Lora', Georgia;
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  background: var(--dark);
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.hidden,
+[hidden] {
+  display: none;
+}
+
+::selection {
+  background: var(--black-pearl);
+}
+
+p > a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(white, 0.1);
+  height: 0;
+  width: 100%;
+  margin: 1em auto;
+}
+
+ul,
+ol,
+li {
+  list-style-type: none;
+}
+
+li > a {
+  display: block;
+  color: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+  color: var(--deep-blue);
+  font-weight: 400;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: inherit;
+}
+
+a:visited {
+  text-decoration: line-through;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+  background: var(--pastel-green);
+  color: white;
+  text-align: right;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 1em;
+  font-weight: 400;
+  max-width: 300px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  padding: 0 2em;
+  padding-right: 0;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  transition: padding 200ms, background 200ms;
+}
+
+.button i {
+  margin-left: auto;
+  padding: 1em;
+  font-size: 16px;
+  background: var(--pastel-green);
+  transition: padding 200ms;
+}
+
+.button:hover {
+  padding-left: 3em;
+  background: var(--pastel-green);
+}
+
+.button:hover i {
+  padding: 1em 2em;
+}
+
+.Portfolio.nav-open .Index .IndexOverlay {
+  opacity: 0.9;
+}

@@ -1,22 +1,21 @@
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config.dev');
-const PORT = process.env.PORT || 3000;
+const webpack = require('webpack')
+const WebpackDevServer = require('webpack-dev-server')
+const config = require('./webpack.config')
 
-require('colors');
+const PORT = process.env.PORT || 3000
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   noInfo: true,
-  historyApiFallback: true,
-}).listen(PORT, 'localhost', function (err, result) {
-  if (err) console.log(err);
+  historyApiFallback: true
+}).listen(PORT, 'localhost', err => {
+  if (err) console.log(err)
 
-  console.log('===================================='.magenta);
-  console.log('         WEBPACK DEV SERVER         ');
-  console.log('===================================='.magenta);
-  console.log('Configuration:', 'webpack.config.dev.js'.magenta);
-  console.log('Listening at', `http://localhost:${PORT}`.magenta);
-  console.log('===================================='.magenta);
-});
+  console.log('====================================')
+  console.log('         WEBPACK DEV SERVER         ')
+  console.log('====================================')
+  console.log('Configuration:', 'webpack.config.js')
+  console.log('Listening at', `http://localhost:${PORT}`)
+  console.log('====================================')
+})
