@@ -7,7 +7,6 @@ import config from './config/metrics'
 
 import './styles/app.css'
 import './styles/icons.css'
-import './images/preview.png'
 
 // Context
 import ProjectsProvider from './context/ProjectsProvider'

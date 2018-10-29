@@ -48,8 +48,12 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(ttf|eot|svg|woff|jpg|png)(\?[a-z0-9]+)?$/,
+        test: /\.(ttf|eot|svg|woff)(\?[a-z0-9]+)?$/,
         use: 'file-loader?name=[path][name].[ext]'
+      },
+      {
+        test: /\.(png|jpg|jpey)(\?[a-z0-9]+)?$/,
+        use: 'url-loader?name=[path][name].[ext]'
       },
       {
         test: /\.js$/,

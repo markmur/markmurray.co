@@ -1,24 +1,15 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Consumer as ProjectsConsumer } from '../context/ProjectsProvider'
 import ProjectShowcase from './ProjectShowcase'
 
 class Index extends Component {
-  static propTypes = {
-    projects: PropTypes.object
-  }
-
-  static defaultProps = {
-    projects: {}
-  }
-
   render() {
     return (
       <div className="homepage">
         <div
           className="Index"
-          style={{ backgroundImage: `url('images/mark.jpg')` }}
+          style={{ backgroundImage: `url('static/images/mark.jpg')` }}
         >
           <div className="rekt" />
           <div className="IndexOverlay" />

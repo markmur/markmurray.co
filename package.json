@@ -74,7 +74,8 @@
     "space": true,
     "rules": {
       "camelcase": 0,
-      "unicorn/filename-case": 0
+      "unicorn/filename-case": 0,
+      "import/no-unassigned-import": 0
     },
     "extends": "xo-react",
     "plugins": [
